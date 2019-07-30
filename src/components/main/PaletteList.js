@@ -1,14 +1,16 @@
-import React from 'react';
-import seedColors from '../../seedColors';
+import React, { useContext } from 'react';
 import styles from '../../style/paletteListStyle';
 import { withStyles } from '@material-ui/styles';
 import PaletteCard from "./PaletteCard";
+import ColorsContext from '../../context/colors-context';
 
 const PaletteList = ({classes}) => {
 
+  const {colors} = useContext(ColorsContext);
+
   return (
     <div className={classes.paletteList}>
-      {seedColors.map(seedColor =>
+      {colors.map(seedColor =>
         <PaletteCard key={seedColor.id}
         paletteName={seedColor.paletteName}
         id={seedColor.id}

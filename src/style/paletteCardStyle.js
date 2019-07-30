@@ -33,6 +33,7 @@ export default {
     borderTopRightRadius: "5px",
     backgroundColor: "red",
     opacity: 0,
-    transition: "opacity 1s"
+    transition: "opacity 1s",
+    zIndex: "10"
   }
 };

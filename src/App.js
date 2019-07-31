@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React,  { useReducer, useEffect } from 'react';
 import ColorsContext from './context/colors-context';
 import ColorsReducer from './reducers/colors-reducer';
 import seedColors from './seedColors';

@@ -15,7 +15,7 @@ const PaletteList = ({classes}) => {
         paletteName={seedColor.paletteName}
         id={seedColor.id}
         emoji={seedColor.emoji}
-        colors={seedColor.colors}/>
+        paletteColors={seedColor.colors}/>
       )}
     </div>
   );

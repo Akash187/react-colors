@@ -6,11 +6,12 @@ import ColorsContext from '../../context/colors-context';
 
 const PaletteList = ({classes}) => {
 
-  const {colors} = useContext(ColorsContext);
+  const {state} = useContext(ColorsContext);
+  console.log(state);
 
   return (
     <div className={classes.paletteList}>
-      {colors.map(seedColor =>
+      {state.colors && state.colors.map(seedColor =>
         <PaletteCard key={seedColor.id}
         paletteName={seedColor.paletteName}
         id={seedColor.id}

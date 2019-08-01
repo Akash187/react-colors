@@ -1,11 +1,16 @@
 import React from 'react';
+import styles from '../../style/paletteCardStyle';
+import { withStyles } from '@material-ui/styles';
+import PaletteFooter from "./PaletteFooter";
+import PaletteHeader from "./PaletteHeader";
 
-const Palette = () => {
+const Palette = ({classes}) => {
   return (
     <div>
-      Hello from Palette
+      <PaletteHeader/>
+      <PaletteFooter/>
     </div>
   );
 };
 
-export default Palette;
+export default withStyles(styles)(Palette);

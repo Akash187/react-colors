@@ -1,9 +1,21 @@
 const colorsReducer = (state, action) => {
   switch (action.type) {
-    case 'POPULATE_COLORS':
-      return action.colors;
+    case 'POPULATE_INITIAL_VALUE':
+      return {
+        ...state,
+        colors : action.colors,
+        sliderValue: action.sliderValue
+      };
     case 'DELETE_PALETTE':
-      return action.colors;
+      return {
+        ...state,
+        colors : action.colors
+      };
+    case 'UPDATE_SLIDER_VALUE':
+      return {
+        ...state,
+        sliderValue : action.value
+      };
     default:
       return state
   }

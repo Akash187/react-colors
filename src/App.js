@@ -7,19 +7,23 @@ import Router from "./routes/Router";
 
 function App() {
 
-  const [colors, dispatch] = useReducer(ColorsReducer, []);
+  const [state, dispatch] = useReducer(ColorsReducer, {});
 
   useEffect(() => {
-    const colors = JSON.parse(localStorage.getItem('colors'));
-    dispatch({ type: 'POPULATE_COLORS', colors: colors || seedColors });
+    const state = JSON.parse(localStorage.getItem('state'));
+    if(state){
+      dispatch({ type: 'POPULATE_INITIAL_VALUE', colors: state.colors, sliderValue: state.sliderValue});
+    }else{
+      dispatch({ type: 'POPULATE_INITIAL_VALUE', colors: seedColors, sliderValue: 500 });
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('colors', JSON.stringify(colors))
-  }, [colors]);
+    localStorage.setItem('state', JSON.stringify(state))
+  }, [state]);
 
   return (
-    <ColorsContext.Provider value={{ colors, dispatch }}>
+    <ColorsContext.Provider value={{ state, dispatch }}>
       <Router/>
     </ColorsContext.Provider>
   );

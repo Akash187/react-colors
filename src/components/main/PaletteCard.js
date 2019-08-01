@@ -3,7 +3,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import styles from '../../style/paletteCardStyle';
 import { withStyles } from '@material-ui/styles';
 import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
 import ColorsContext from '../../context/colors-context';
 import DeleteDialog from "./DeleteDialog";
 import { Transition } from 'react-transition-group';
@@ -25,7 +24,7 @@ const transitionStyles = {
 const PaletteCard = ({paletteName, id, emoji, paletteColors, classes, history}) => {
 
   const [open, setOpen] = useState(false);
-  const {colors, dispatch} = useContext(ColorsContext);
+  const {state, dispatch} = useContext(ColorsContext);
   const [inProp, setInProp] = useState(true);
 
   function handleClickOpen(e) {
@@ -42,7 +41,7 @@ const PaletteCard = ({paletteName, id, emoji, paletteColors, classes, history}) 
     e.stopPropagation();
     setInProp(false);
     setTimeout(() => {
-      let updatedColors = colors.filter(palette => palette.id !== id);
+      let updatedColors = state.colors.filter(palette => palette.id !== id);
       dispatch({ type: 'DELETE_PALETTE', colors: updatedColors });
     }, 300);
   };
@@ -71,7 +70,4 @@ const PaletteCard = ({paletteName, id, emoji, paletteColors, classes, history}) 
   );
 };
 
-export default compose(
-  withStyles(styles),
-  withRouter
-)(PaletteCard);
+export default withStyles(styles)(withRouter(PaletteCard));

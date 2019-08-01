@@ -5,6 +5,7 @@ export default {
     backgroundImage: `url(${bgImg})`,
     backgroundSize: "cover",
     height: "100vh",
+    width: "100vw",
     overflowY: "auto"
   },
   container: {

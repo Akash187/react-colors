@@ -23,6 +23,16 @@ const PaletteHeader = ({classes}) => {
             min={100}
             max={900}
             onChange={(value) => dispatch({type: 'UPDATE_SLIDER_VALUE', value})}
+            trackStyle={{ backgroundColor: '#e9e9e9', height: 8 }}
+            handleStyle={{
+              borderColor: 'green',
+              height: 16,
+              width: 16,
+              marginLeft: -14,
+              marginTop: -4,
+              backgroundColor: 'green',
+            }}
+            railStyle={{ backgroundColor: '#e9e9e9', height: 8 }}
           />
         </div>
       </div>

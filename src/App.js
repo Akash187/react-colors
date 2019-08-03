@@ -12,9 +12,11 @@ function App() {
   useEffect(() => {
     const state = JSON.parse(localStorage.getItem('state'));
     if(state){
-      dispatch({ type: 'POPULATE_INITIAL_VALUE', colors: state.colors, sliderValue: state.sliderValue});
+      dispatch({ type: 'POPULATE_INITIAL_VALUE', state});
     }else{
-      dispatch({ type: 'POPULATE_INITIAL_VALUE', colors: seedColors, sliderValue: 500 });
+      dispatch({ type: 'POPULATE_INITIAL_VALUE',
+        state: { colors: seedColors, sliderValue: 500, colorFormat: 'hex' }
+      });
     }
   }, []);
 

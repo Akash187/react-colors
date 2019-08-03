@@ -7,7 +7,6 @@ import ColorsContext from '../../context/colors-context';
 const PaletteList = ({classes}) => {
 
   const {state} = useContext(ColorsContext);
-  console.log(state);
 
   return (
     <div className={classes.paletteList}>

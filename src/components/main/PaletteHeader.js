@@ -4,17 +4,22 @@ import { withStyles } from '@material-ui/styles';
 import Slider from 'rc-slider';
 import ColorsContext from '../../context/colors-context';
 import 'rc-slider/assets/index.css';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
-const PaletteHeader = ({classes}) => {
+const PaletteHeader = ({classes, history, showSlider}) => {
 
   const {state, dispatch} = useContext(ColorsContext);
 
   return (
-    <div className={`${classes.headerFooter} ${classes.header}`}>
+    <div className={classes.header}>
       <div className={classes.headerAndLevel}>
-        <div className={classes.headerTitle}>ReactColorPicker</div>
-        <div className={classes.sliderContainer}>
-          <div>Level : {state.sliderValue} </div>
+        <div className={classes.headerTitle} onClick={() => history.push('/')}>
+          <div className={classes.fullName}>ReactColorPicker</div>
+          <div className={classes.shortName}>RCP</div>
+        </div>
+        {showSlider && <div className={classes.sliderContainer}>
+          <div className={classes.levelText}>Level : {state.sliderValue} </div>
           <Slider
             className={classes.slider}
             step={100}
@@ -28,15 +33,23 @@ const PaletteHeader = ({classes}) => {
               borderColor: 'green',
               height: 16,
               width: 16,
-              marginLeft: -14,
+              marginLeft: -1,
               marginTop: -4,
               backgroundColor: 'green',
             }}
             railStyle={{ backgroundColor: '#e9e9e9', height: 8 }}
           />
-        </div>
+        </div>}
       </div>
-      <div>Dropdown</div>
+      <Select
+        value={state.colorFormat || 'hex'}
+        onChange={(e) => dispatch({type: 'UPDATE_COLOR_FORMAT', colorFormat: e.target.value})}
+        className={classes.select}
+      >
+        <MenuItem value={'hex'}>HEX</MenuItem>
+        <MenuItem value={'rgb'}>RGB</MenuItem>
+        <MenuItem value={'rgba'}>RGBA</MenuItem>
+      </Select>
     </div>
   );
 };

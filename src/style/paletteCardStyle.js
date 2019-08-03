@@ -14,7 +14,7 @@ export default {
   colors: {
     display: "grid",
     gridTemplateColumns: "repeat(5, 1fr)",
-    gridTemplateRows: "repeat(4, 40px)"
+    height: "calc(100% - 40px)"
   },
   cardInfo: {
     display: "flex",

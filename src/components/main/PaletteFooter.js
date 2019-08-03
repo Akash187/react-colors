@@ -2,11 +2,11 @@ import React from 'react';
 import styles from '../../style/paletteStyle';
 import { withStyles } from '@material-ui/styles';
 
-const PaletteFooter = ({classes}) => {
+const PaletteFooter = ({classes, name, emoji}) => {
   return (
-    <div className={`${classes.headerFooter} ${classes.footer}`}>
-      <div>Flat UI Colors Spanish</div>
-      <div className={classes.footerEmoji}>US</div>
+    <div className={classes.footer}>
+      <div>{name}</div>
+      <div className={classes.footerEmoji}>{emoji}</div>
     </div>
   );
 };

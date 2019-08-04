@@ -6,8 +6,9 @@ import PaletteHeader from "./PaletteHeader";
 import ColorsContext from '../../context/colors-context';
 import PaletteColors from "./PaletteColors";
 import {generatePalette} from "../../colorHelpers";
+import withCopyBox from './PaletteHOC';
 
-const Palette = ({classes, history, match}) => {
+const Palette = ({classes, history, match, copyColor}) => {
 
   const { state } = useContext(ColorsContext);
   const [palette, setPalette] = useState({});
@@ -26,10 +27,12 @@ const Palette = ({classes, history, match}) => {
         colors={palette.colors ? palette.colors[state.sliderValue] : []}
         paletteId={match.params.id}
         history={history}
+        copyColor={copyColor}
+        colorFormat={state.colorFormat}
       />
       <PaletteFooter name={palette.paletteName || ''} emoji={palette.emoji || ''}/>
     </div>
   );
 };
 
-export default withStyles(styles)(Palette);
+export default withStyles(styles)(withCopyBox(Palette));

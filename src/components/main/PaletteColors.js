@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '../../style/paletteStyle';
 import { withStyles } from '@material-ui/styles';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
-const PaletteColors = ({classes, colors, paletteId, history}) => {
+const PaletteColors = ({classes, colors, paletteId, history, copyColor, colorFormat}) => {
 
   const moreColor = (e, id) => {
     e.stopPropagation();
@@ -10,24 +11,28 @@ const PaletteColors = ({classes, colors, paletteId, history}) => {
   };
 
   return (
-    <div className={classes.paletteColors}>
-      {colors.map(
-        ({name, hex, id}) =>
-          <div key={name} className={classes.colorContainer}>
-            <div className={classes.centerBtn}>
-              <div className={`${classes.paletteBtnTextStyle} ${classes.copyText}`}>copy</div>
-            </div>
-            <div
-              className={classes.color}
-              style={{backgroundColor: hex}}
-            >
-              <div className={classes.paletteColorInfo}>
-                <div className={classes.colorName}>{name}</div>
-                <div className={`${classes.paletteBtnTextStyle} ${classes.moreText}`} onClick={(e) => moreColor(e, id)}>More</div>
+    <div>
+      <div className={classes.paletteColors}>
+        {colors.map(
+          (color) =>
+            <CopyToClipboard text={color[colorFormat]} key={color.name}>
+              <div className={classes.colorContainer} onClick={() => copyColor(color[colorFormat])}>
+                <div className={classes.centerBtn}>
+                  <div className={`${classes.paletteBtnTextStyle} ${classes.copyText}`}>copy</div>
+                </div>
+                <div
+                  className={classes.color}
+                  style={{backgroundColor: color.hex}}
+                >
+                  <div className={classes.paletteColorInfo}>
+                    <div className={classes.colorName}>{color.name}</div>
+                    <div className={`${classes.paletteBtnTextStyle} ${classes.moreText}`} onClick={(e) => moreColor(e, color.id)}>More</div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-      )}
+            </CopyToClipboard>
+        )}
+      </div>
     </div>
   );
 };

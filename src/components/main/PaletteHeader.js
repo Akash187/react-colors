@@ -11,6 +11,12 @@ const PaletteHeader = ({classes, history, showSlider}) => {
 
   const {state, dispatch} = useContext(ColorsContext);
 
+  const handleChange = (value) => {
+    dispatch({type: 'UPDATE_COLOR_FORMAT', colorFormat: value});
+    dispatch({type: 'UPDATE_SHOW_ALERT', showAlert: !state.showAlert});
+    dispatch({type: 'UPDATE_ALERT_MESSAGE', alertMessage: `Format changed to ${value.toUpperCase()}`});
+  };
+
   return (
     <div className={classes.header}>
       <div className={classes.headerAndLevel}>
@@ -43,7 +49,7 @@ const PaletteHeader = ({classes, history, showSlider}) => {
       </div>
       <Select
         value={state.colorFormat || 'hex'}
-        onChange={(e) => dispatch({type: 'UPDATE_COLOR_FORMAT', colorFormat: e.target.value})}
+        onChange={(e) => handleChange(e.target.value)}
         className={classes.select}
       >
         <MenuItem value={'hex'}>HEX</MenuItem>

@@ -1,5 +1,6 @@
 import React, {useState, Fragment} from 'react';
 import CopyBox from './CopyBox';
+import Alert from './Alert';
 
 const withCopyBox = Component => {
   return (props) => {
@@ -14,6 +15,7 @@ const withCopyBox = Component => {
 
     return(
       <Fragment>
+        <Alert/>
         {copy ? <CopyBox inProp={copy} color={color}/> : <Component {...props} copy={copy} copyColor={copyColor}/>}
       </Fragment>
     )

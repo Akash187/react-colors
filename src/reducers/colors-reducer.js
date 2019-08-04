@@ -17,6 +17,16 @@ const colorsReducer = (state, action) => {
         ...state,
         colorFormat: action.colorFormat
       };
+    case 'UPDATE_SHOW_ALERT':
+      return {
+        ...state,
+        showAlert: action.showAlert
+      };
+    case 'UPDATE_ALERT_MESSAGE':
+      return {
+        ...state,
+        alertMessage: action.alertMessage
+      };
     default:
       return state
   }

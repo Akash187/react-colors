@@ -15,7 +15,7 @@ function App() {
       dispatch({ type: 'POPULATE_INITIAL_VALUE', state});
     }else{
       dispatch({ type: 'POPULATE_INITIAL_VALUE',
-        state: { colors: seedColors, sliderValue: 500, colorFormat: 'hex' }
+        state: { colors: seedColors, sliderValue: 500, colorFormat: 'hex', showAlert: false, alertMessage: '' }
       });
     }
   }, []);

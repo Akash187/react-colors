@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styles from '../../style/paletteStyle';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PaletteFooter from "./PaletteFooter";
 import PaletteHeader from "./PaletteHeader";
 import ColorsContext from '../../context/colors-context';

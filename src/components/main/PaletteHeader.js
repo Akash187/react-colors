@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from '../../style/paletteStyle';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Slider from 'rc-slider';
 import ColorsContext from '../../context/colors-context';
 import 'rc-slider/assets/index.css';

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from '../../style/paletteListStyle';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PaletteCard from "./PaletteCard";
 import ColorsContext from '../../context/colors-context';
 

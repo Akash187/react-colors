@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import styles from '../../style/paletteCardStyle';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import ColorsContext from '../../context/colors-context';
 import DeleteDialog from "./DeleteDialog";

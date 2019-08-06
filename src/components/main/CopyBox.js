@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {CSSTransition} from 'react-transition-group';
 import styles from '../../style/copyBoxStyle';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const CopyBox = ({classes, color}) => {
 

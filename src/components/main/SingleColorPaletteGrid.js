@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../style/paletteStyle';
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const SingleColorPaletteGrid = ({classes, colors, paletteId, history, copyColor, colorFormat}) => {

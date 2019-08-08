@@ -4,21 +4,15 @@ import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import LibraryAdd from '@material-ui/icons/LibraryAdd';
+import Button from '@material-ui/core/Button';
 import styles from '../../style/createPaletteStyle';
 import { withStyles } from '@material-ui/core/styles';
+import DrawerContent from "./DrawerContent";
 
-const CreatePaletteDrawer = ({classes, open, handleDrawerOpen, handleDrawerClose}) => {
+const CreatePaletteDrawer = ({classes, open, colors, handleDrawerOpen, handleDrawerClose, history, color, setColor, colorName, setColorName, saveColor, addRandomColor, clearPalette, setOpenPaletteNameDialog}) => {
 
   return (
     <React.Fragment>
@@ -29,19 +23,25 @@ const CreatePaletteDrawer = ({classes, open, handleDrawerOpen, handleDrawerClose
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography>
+        <Toolbar className={classes.toolbar}>
+          <div className={classes.toolbarTitle}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <LibraryAdd/>
+            </IconButton>
+            <Typography variant="h6" color="textPrimary" noWrap>
+              Create <span className={classes.headerTitleExtendedTxt}>A Palette</span>
+            </Typography>
+          </div>
+          <div>
+            <Button variant="contained" color="secondary" className={classes.backBtn} onClick={() => history.goBack()}>Go Back</Button>
+            <Button variant="contained" color="primary" onClick={() => setOpenPaletteNameDialog(true)}>Save</Button>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -53,29 +53,17 @@ const CreatePaletteDrawer = ({classes, open, handleDrawerOpen, handleDrawerClose
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {<ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <DrawerContent
+          handleDrawerClose={handleDrawerClose}
+          color={color}
+          colors={colors}
+          setColor={setColor}
+          colorName={colorName}
+          setColorName={setColorName}
+          saveColor={saveColor}
+          addRandomColor={addRandomColor}
+          clearPalette={clearPalette}
+        />
       </Drawer>
     </React.Fragment>
   );
